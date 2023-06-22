@@ -1,13 +1,23 @@
-import { useState, useReducer } from "react";
-import logo from "./logo.svg";
+import { createContext } from "react";
 import "./App.css";
 import DemoReducer from "./UseReducerDemo/DemoReducer";
+import DemoContext from "./ContextApiDemo/DemoContext"
 
-function App() {
+const Context = createContext();
+
+function App(props) {
+  const detailsObj = {
+    name: "Anuj",
+    dob: '03-09-1994'
+  }
+  // use DemoReducer inside app if we use reducer
+  // use DemoContext and context api related inside app if we use context
   return (
-    <div className="App">
-      <DemoReducer />
-    </div>
+    <Context.Provider value={detailsObj}>
+      <div className="App">
+        <DemoContext context={Context} />
+      </div>
+    </Context.Provider>
   );
 }
 
